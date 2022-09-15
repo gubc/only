@@ -1,6 +1,7 @@
 package com.sxindong.only.net;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -40,7 +41,7 @@ public class App {
 		jsonParam.put("data", data);
 		data.put("DATE", dateContent);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH点mm分");
-		dateContent.put("value", sdf.format(new Date()));
+		dateContent.put("value", dayAdd8H(sdf));
 		dateContent.put("color", "#173177");
 		data.put("MEET_DAYS", meetDaysContent);
 		meetDaysContent.put("value", "今天是我们相遇的第398天，嘿嘿嘿");
@@ -70,4 +71,12 @@ public class App {
 		}
 		return result.getString("access_token");
 	}
+
+	public static String dayAdd8H(SimpleDateFormat sdf) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		calendar.set(Calendar.HOUR,calendar.get(Calendar.HOUR) + 8);
+		return sdf.format(calendar.getTime());
+	}
+
 }
