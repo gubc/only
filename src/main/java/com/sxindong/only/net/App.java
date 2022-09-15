@@ -2,6 +2,9 @@ package com.sxindong.only.net;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sxindong.only.net.constant.TemplateConstant;
@@ -9,6 +12,11 @@ import com.sxindong.only.net.constant.URLConstant;
 import com.sxindong.only.net.util.HttpsUtil;
 
 public class App {
+	
+	@PostConstruct
+    void started() {
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
+    }
 
 	public static void send() {
 
