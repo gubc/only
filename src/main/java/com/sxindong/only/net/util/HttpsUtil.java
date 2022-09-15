@@ -15,22 +15,22 @@ import com.sxindong.only.net.manager.MyX509TrustManager;
 
 public class HttpsUtil {
 	/** 
-    * ·¢ÆğhttpsÇëÇó²¢»ñÈ¡½á¹û Ôö¼Ó3Ãë³¬Ê±Ê±¼ä
+    * å‘èµ·httpsè¯·æ±‚å¹¶è·å–ç»“æœ å¢åŠ 3ç§’è¶…æ—¶æ—¶é—´
     *  
-    * @param requestUrl ÇëÇóµØÖ· 
-    * @param requestMethod ÇëÇó·½Ê½£¨GET¡¢POST£© 
-    * @param outputStr Ìá½»µÄÊı¾İ 
-    * @return JSONObject(Í¨¹ıJSONObject.get(key)µÄ·½Ê½»ñÈ¡json¶ÔÏóµÄÊôĞÔÖµ) 
+    * @param requestUrl è¯·æ±‚åœ°å€ 
+    * @param requestMethod è¯·æ±‚æ–¹å¼ï¼ˆGETã€POSTï¼‰ 
+    * @param outputStr æäº¤çš„æ•°æ® 
+    * @return JSONObject(é€šè¿‡JSONObject.get(key)çš„æ–¹å¼è·å–jsonå¯¹è±¡çš„å±æ€§å€¼) 
     */  
    public static JSONObject httpRequest(String requestUrl, String requestMethod, String outputStr) {  
        JSONObject jsonObject = null;  
        StringBuffer buffer = new StringBuffer();  
        try {  
-           // ´´½¨SSLContext¶ÔÏó£¬²¢Ê¹ÓÃÎÒÃÇÖ¸¶¨µÄĞÅÈÎ¹ÜÀíÆ÷³õÊ¼»¯  
+           // åˆ›å»ºSSLContextå¯¹è±¡ï¼Œå¹¶ä½¿ç”¨æˆ‘ä»¬æŒ‡å®šçš„ä¿¡ä»»ç®¡ç†å™¨åˆå§‹åŒ–  
            TrustManager[] tm = { new MyX509TrustManager() };  
            SSLContext sslContext = SSLContext.getInstance("SSL", "SunJSSE");  
            sslContext.init(null, tm, new java.security.SecureRandom());  
-           // ´ÓÉÏÊöSSLContext¶ÔÏóÖĞµÃµ½SSLSocketFactory¶ÔÏó  
+           // ä»ä¸Šè¿°SSLContextå¯¹è±¡ä¸­å¾—åˆ°SSLSocketFactoryå¯¹è±¡  
            SSLSocketFactory ssf = sslContext.getSocketFactory();  
  
            URL url = new URL(requestUrl);
@@ -42,21 +42,21 @@ public class HttpsUtil {
            httpUrlConn.setUseCaches(false);
            httpUrlConn.setConnectTimeout(3000);
            httpUrlConn.setReadTimeout(3000);
-           // ÉèÖÃÇëÇó·½Ê½£¨GET/POST£©  
+           // è®¾ç½®è¯·æ±‚æ–¹å¼ï¼ˆGET/POSTï¼‰  
            httpUrlConn.setRequestMethod(requestMethod);  
  
            if ("GET".equalsIgnoreCase(requestMethod))  
                httpUrlConn.connect();  
  
-           // µ±ÓĞÊı¾İĞèÒªÌá½»Ê±  
+           // å½“æœ‰æ•°æ®éœ€è¦æäº¤æ—¶  
            if (null != outputStr) {  
                OutputStream outputStream = httpUrlConn.getOutputStream();  
-               // ×¢Òâ±àÂë¸ñÊ½£¬·ÀÖ¹ÖĞÎÄÂÒÂë  
+               // æ³¨æ„ç¼–ç æ ¼å¼ï¼Œé˜²æ­¢ä¸­æ–‡ä¹±ç   
                outputStream.write(outputStr.getBytes("UTF-8"));  
                outputStream.close();  
            }  
  
-           // ½«·µ»ØµÄÊäÈëÁ÷×ª»»³É×Ö·û´®  
+           // å°†è¿”å›çš„è¾“å…¥æµè½¬æ¢æˆå­—ç¬¦ä¸²  
            InputStream inputStream = httpUrlConn.getInputStream();  
            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "utf-8");  
            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);  
@@ -67,7 +67,7 @@ public class HttpsUtil {
            }  
            bufferedReader.close();  
            inputStreamReader.close();  
-           // ÊÍ·Å×ÊÔ´  
+           // é‡Šæ”¾èµ„æº  
            inputStream.close();  
            inputStream = null;  
            httpUrlConn.disconnect();  

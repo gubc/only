@@ -31,21 +31,21 @@ public class App {
 		jsonParam.put("topcolor", "#FF0000");
 		jsonParam.put("data", data);
 		data.put("DATE", dateContent);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ HHµãmm·Ö");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ HHç‚¹mmåˆ†");
 		dateContent.put("value", sdf.format(new Date()));
 		dateContent.put("color", "#173177");
 		data.put("MEET_DAYS", meetDaysContent);
-		meetDaysContent.put("value", "½ñÌìÊÇÎÒÃÇÏàÓöµÄµÚ398Ìì£¬ºÙºÙºÙ");
+		meetDaysContent.put("value", "ä»Šå¤©æ˜¯æˆ‘ä»¬ç›¸é‡çš„ç¬¬398å¤©ï¼Œå˜¿å˜¿å˜¿");
 		meetDaysContent.put("color", "#90EE90");
 		data.put("HEART_WORDS", heartWordsContent);
-//		heartWordsContent.put("value", "¸½Ê«Ò»Ê×~~~~~\r\n"
-//				+ "        ÌöÌöÇ£Å£ĞÇ\r\n"
-//				+ "ÌöÌöÇ£Å£ĞÇ£¬ğ¨ğ¨ºÓººÅ®¡£\r\n"
-//				+ "ÏËÏËßªËØÊÖ£¬ÔıÔıÅª»úèÌ¡£\r\n"
-//				+ "ÖÕÈÕ²»³ÉÕÂ£¬ÆüÌéÁãÈçÓê¡£\r\n"
-//				+ "ºÓººÇåÇÒÇ³£¬ÏàÈ¥¸´¼¸Ğí¡£\r\n"
-//				+ "Ó¯Ó¯Ò»Ë®¼ä£¬ÂöÂö²»µÃÓï¡£");
-		heartWordsContent.put("value","°®Äã²»ÊÇÁ½ÈıÌì£¬Ã¿ÌìÏëÄãºÜ¶à±é¹ş¹ş¹ş¹ş¹ş¹ş");
+//		heartWordsContent.put("value", "é™„è¯—ä¸€é¦–~~~~~\r\n"
+//				+ "        è¿¢è¿¢ç‰µç‰›æ˜Ÿ\r\n"
+//				+ "è¿¢è¿¢ç‰µç‰›æ˜Ÿï¼Œçšçšæ²³æ±‰å¥³ã€‚\r\n"
+//				+ "çº¤çº¤æ“¢ç´ æ‰‹ï¼Œæœ­æœ­å¼„æœºæ¼ã€‚\r\n"
+//				+ "ç»ˆæ—¥ä¸æˆç« ï¼Œæ³£æ¶•é›¶å¦‚é›¨ã€‚\r\n"
+//				+ "æ²³æ±‰æ¸…ä¸”æµ…ï¼Œç›¸å»å¤å‡ è®¸ã€‚\r\n"
+//				+ "ç›ˆç›ˆä¸€æ°´é—´ï¼Œè„‰è„‰ä¸å¾—è¯­ã€‚");
+		heartWordsContent.put("value","çˆ±ä½ ä¸æ˜¯ä¸¤ä¸‰å¤©ï¼Œæ¯å¤©æƒ³ä½ å¾ˆå¤šéå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆ");
 		heartWordsContent.put("color", "#14144D");
 		
 		outputStr = jsonParam.toJSONString();
@@ -58,7 +58,7 @@ public class App {
 		String url = URLConstant.ACCESS_TOKEN_URL_TEST;
 		JSONObject result = HttpsUtil.httpRequest(url , "POST", null);
 		if(result == null) {
-			throw new RuntimeException("Î´»ñÈ¡µ½ACCESS_TOKEN");
+			throw new RuntimeException("æœªè·å–åˆ°ACCESS_TOKEN");
 		}
 		return result.getString("access_token");
 	}
